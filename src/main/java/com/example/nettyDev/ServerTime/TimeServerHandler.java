@@ -21,7 +21,7 @@ public class TimeServerHandler extends ChannelInboundHandlerAdapter {
         //我们需要一个容量最少为4字节的ByteBuf
         //通过ChannelHandlerContext.alloc()方法，我们可以获取一个ByteBufAllocator 字节缓冲分配器
         final ByteBuf time = ctx.alloc().buffer(4);
-        time.writeInt((int)(System.currentTimeMillis()/ 100L + 2208988800L));
+        time.writeInt((int)(System.currentTimeMillis()/ 1000L + 2208988800L));
         //写入已经创建的消息
         /**
          * As usual, we write the constructed message.
