@@ -11,7 +11,9 @@ public class TimeClientHandler extends ChannelInboundHandlerAdapter {
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
         ByteBuf m = (ByteBuf) msg; // (1)
         try {
-            long currentTimeMillis = (m.readUnsignedInt() - 2208988800L) * 1000L;
+            long intmsg = m.readUnsignedInt();
+            System.out.println(intmsg);
+            long currentTimeMillis = (intmsg - 2208988800L) * 1000L;
             System.out.println(new Date(currentTimeMillis));
             ctx.close();
         } finally {

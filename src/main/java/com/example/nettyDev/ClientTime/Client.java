@@ -27,6 +27,12 @@ public class Client {
                     });
 
             //启动客户端
+            b.connect(host, port).sync();
+            b.connect(host, port).sync();
+            b.connect(host, port).sync();
+            b.connect(host, port).sync();
+            b.connect(host, port).sync();
+            //Thread.sleep(10000);
             ChannelFuture f = b.connect(host, port).sync();
             //
             f.channel().closeFuture().sync();
