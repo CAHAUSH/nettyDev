@@ -1,9 +1,7 @@
 package com.example.nettyDev.thread;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ThreadPoolExecutor;
+import java.util.PriorityQueue;
+import java.util.concurrent.*;
 
 /**
  * @author SunHang
@@ -56,6 +54,15 @@ public class ClassicThread {
                 }
             });
         }
+        //必须配置参数，基于数组的有界阻塞队列，共使用一个ReentrantLock
+        new ArrayBlockingQueue<>(5);
+        //可以不配置参数，基于链表的无界阻塞队列，队头队尾各使用一个ReentrantLock，dque双端队列，吞吐量高于ArrayBlockingQueue
+        new LinkedBlockingDeque<>();
+        //无解实时队里，队列里不持任何任务，接收到任务后立马创建线程进行执行，
+        new SynchronousQueue<>();
+        //以下两个都是优先级队列，好像是基于堆排序算法进行实现（堆排序，是一个满二叉树，对于大顶堆每个节点的值都大于其左右子节点对应的值。小顶堆与之相反）
+        new DelayQueue<>();
+        new PriorityQueue<>();
 
     }
 }
